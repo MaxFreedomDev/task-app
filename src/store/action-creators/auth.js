@@ -25,7 +25,6 @@ export const signIn = (credentials) => (dispatch) => {
       };
       localStorage.setItem("token", response.message.token);
       dispatch(setAuth(true));
-      dispatch(setError(null));
     }
   });
 };

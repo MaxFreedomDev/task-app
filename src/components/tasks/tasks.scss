@@ -1,0 +1,17 @@
+@import "../row/row";
+
+.tableWrapper{
+  overflow-x: auto;
+}
+.tableRow {
+  background-color: #FFFFFF;
+  cursor: pointer;
+  .MuiTableCell-root {
+    @include adaptiv-font(14, 10);
+  }
+  &:hover {
+    background-color: #fafafa;
+  }
+}
+
+

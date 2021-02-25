@@ -10,16 +10,21 @@ import IconButton from "@material-ui/core/IconButton";
 import StyledButton from "../common/styled-button";
 
 import "./login.scss";
+import { Redirect } from "react-router-dom";
+import { TASKS_ROUTE } from "../../utils/constants";
 
 const Login = () => {
   const { signIn } = useActions();
-  const { error } = useSelector((state) => state.auth);
+  const { error, authentication } = useSelector((state) => state.auth);
   const [passwordShown, setPasswordShown] = useState(false);
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data, e) => {
     e.preventDefault();
     signIn(data);
   };
+  if (authentication) {
+    return <Redirect to={TASKS_ROUTE} />;
+  }
   return (
     <div className="loginWrapper">
       <div className="loginContainer">

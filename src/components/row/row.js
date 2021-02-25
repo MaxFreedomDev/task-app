@@ -1,9 +1,12 @@
 import React from "react";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import AssignmentIcon from "@material-ui/icons/Assignment";
+import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
 import "./row.scss";
 import { useActions } from "../../hooks/use-actions";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { LOGIN_ROUTE, TASKS_ROUTE } from "../../utils/constants";
 
 const Row = (props) => {
   const { authentication } = useSelector((state) => state.auth);
@@ -11,12 +14,20 @@ const Row = (props) => {
   return (
     <div className="wrapper-app">
       <nav>
-        <AssignmentIcon className="logo" />
-        {authentication && (
+        <div className="logo">
+          <AssignmentIcon />
+          <Link to={TASKS_ROUTE}>Список задач</Link>
+        </div>
+        {authentication ? (
           <div className="logout" onClick={() => signOut()}>
             <span>Выйти</span>
             <ExitToAppIcon />
           </div>
+        ) : (
+          <Link to={LOGIN_ROUTE} className="logout">
+            <span>Войти</span>
+            <MeetingRoomIcon />
+          </Link>
         )}
       </nav>
       <div className="app-content">{props.children}</div>

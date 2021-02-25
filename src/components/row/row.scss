@@ -1,0 +1,48 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1, h2, h3, h4 {
+  margin: 0;
+}
+
+.wrapper-app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  background-color: #f7f9fa;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #25252a;
+  box-shadow: 0 0 4px rgb(255 255 255 / 10%);
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 50px;
+  color: #FFFFFF;
+  .logo {
+    margin-left: 30px;
+  }
+  .logout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 30px;
+    width: 80px;
+    cursor: pointer;
+    &:hover {
+      color: #96ccff;
+    }
+  }
+}
+.app-content {
+  margin-top: 50px;
+  height: 100%;
+}

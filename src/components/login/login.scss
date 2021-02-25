@@ -1,0 +1,40 @@
+
+.loginWrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 20px 20px rgb(40 40 40 / 5%);
+  background-color: #FFFFFF;
+  padding: 20px;
+  h2 {
+    margin: 0 auto;
+  }
+  .errorServer {
+    padding: 10px;
+    font-size: 12px;
+    text-align: center;
+    color: #dc3545;
+    background-color: #faa7a7;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  .inputLogin {
+    width: 300px;
+    margin-bottom: 25px;
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+  }
+}

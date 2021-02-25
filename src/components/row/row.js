@@ -2,23 +2,21 @@ import React from "react";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import "./row.scss";
+import { useActions } from "../../hooks/use-actions";
+import { useSelector } from "react-redux";
 
 const Row = (props) => {
-  const user = true;
-  const logout = () => {
-    console.log("logOut");
-  };
+  const { authentication } = useSelector((state) => state.auth);
+  const { signOut } = useActions();
   return (
     <div className="wrapper-app">
       <nav>
-        {user && (
-          <>
-            <AssignmentIcon className="logo" />
-            <div className="logout" onClick={logout}>
-              <span>Выйти</span>
-              <ExitToAppIcon />
-            </div>
-          </>
+        <AssignmentIcon className="logo" />
+        {authentication && (
+          <div className="logout" onClick={() => signOut()}>
+            <span>Выйти</span>
+            <ExitToAppIcon />
+          </div>
         )}
       </nav>
       <div className="app-content">{props.children}</div>

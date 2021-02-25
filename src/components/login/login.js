@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import TextField from "@material-ui/core/TextField";
+import { useActions } from "../../hooks/use-actions";
+import { useSelector } from "react-redux";
 import VisibilityOn from "@material-ui/icons/VisibilityOutlined";
 import VisibilityOff from "@material-ui/icons/VisibilityOffOutlined";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -10,26 +12,26 @@ import StyledButton from "../common/styled-button";
 import "./login.scss";
 
 const Login = () => {
-  const errorServer = "какая то ошибка сервера";
+  const { signIn } = useActions();
+  const { error } = useSelector((state) => state.auth);
   const [passwordShown, setPasswordShown] = useState(false);
-  const { register, handleSubmit, errors, reset } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data, e) => {
     e.preventDefault();
-    console.log(data.email, data.password);
-    reset();
+    signIn(data);
   };
   return (
     <div className="loginWrapper">
       <div className="loginContainer">
         <h2>Авторизация</h2>
-        {errorServer && <div className="errorServer">{errorServer}</div>}
+        {error && <div className="errorServer">{error}</div>}
         <form onSubmit={handleSubmit(onSubmit)} className="loginForm">
           <div className="inputLogin">
             <TextField
               fullWidth
-              id="login"
+              id="username"
               label="Логин"
-              name="login"
+              name="username"
               autoComplete="none"
               variant="outlined"
               error={!!errors.login}
@@ -38,9 +40,9 @@ const Login = () => {
               })}
               type="text"
             />
-            {errors.login && (
+            {errors.username && (
               <span role="alert" className="error">
-                {errors.login.message}
+                {errors.username.message}
               </span>
             )}
           </div>

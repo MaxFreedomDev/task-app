@@ -53,6 +53,9 @@ const Tasks = () => {
   );
 
   const openTask = async (task) => {
+    if (!authentication) {
+      return null;
+    }
     await setTask(task);
     await setStatus(task.status);
     await setText(task.text);

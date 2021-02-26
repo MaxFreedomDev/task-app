@@ -1,5 +1,4 @@
 import { apiService } from "../../index";
-import axios from "axios";
 import { loadingTasks } from "./tasks";
 
 const setAuth = (auth) => {
@@ -21,9 +20,6 @@ export const signIn = (credentials) => (dispatch) => {
       return dispatch(setError(response.message?.password));
     }
     if (response.status === "ok") {
-      axios.defaults.headers.common = {
-        Authorization: `Bearer ${response.message.token}`,
-      };
       localStorage.setItem("token", response.message.token);
       dispatch(setAuth(true));
       dispatch(loadingTasks());
@@ -33,19 +29,13 @@ export const signIn = (credentials) => (dispatch) => {
 
 export const checkToken = () => (dispatch) => {
   const token = localStorage.getItem("token");
+  dispatch(loadingTasks());
   if (token) {
-    axios.defaults.headers.common = {
-      Authorization: `Bearer ${token}`,
-    };
     dispatch(setAuth(true));
-    dispatch(loadingTasks());
   }
 };
 
 export const signOut = () => (dispatch) => {
   dispatch(setAuth(false));
   localStorage.removeItem("token");
-  axios.defaults.headers.common = {
-    Authorization: "",
-  };
 };

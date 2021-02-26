@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2176b951-7db0-41ca-8df5-d75e99964c19" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/api-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/api-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tasks/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tasks/tasks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/action-creators/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/action-creators/auth.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +75,7 @@
       <workItem from="1614243147115" duration="281000" />
       <workItem from="1614243501460" duration="45940000" />
       <workItem from="1614330184269" duration="36703000" />
-      <workItem from="1614376668356" duration="1648000" />
+      <workItem from="1614376668356" duration="4971000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1614244739827</created>
@@ -146,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614375080739</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="fix CORS error">
+      <created>1614378369732</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1614378369732</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,6 +184,7 @@
     <MESSAGE value="add use-local-storage &amp;&amp; refactor use-table" />
     <MESSAGE value="add loader, text &quot;ellipsis&quot;" />
     <MESSAGE value="add localStorage-state for create &amp;&amp; update" />
-    <option name="LAST_COMMIT_MESSAGE" value="add localStorage-state for create &amp;&amp; update" />
+    <MESSAGE value="fix CORS error" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix CORS error" />
   </component>
 </project>

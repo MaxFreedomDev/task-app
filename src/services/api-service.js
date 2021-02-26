@@ -12,11 +12,7 @@ export default class ApiService {
       }
       let data = method === "get" ? { params } : { data: form_data };
       return axios({
-        headers: {
-          "Access-Control-Allow-Methods": "*",
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
+        headers: {},
         method,
         baseURL: this.baseUrl,
         url: url + `${this.developer}`,

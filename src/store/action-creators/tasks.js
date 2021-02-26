@@ -6,7 +6,7 @@ export const setTasksError = (error) => {
     payload: error,
   };
 };
-const loadingTasks = () => {
+export const loadingTasks = () => {
   return {
     type: "LOADING_TASKS",
   };
@@ -36,7 +36,6 @@ export const tasksRequest = (params) => (dispatch) => {
     sort_direction: params?.sort_direction || "asc",
     page: params?.page || 1,
   };
-  dispatch(loadingTasks());
   apiService.tasks(initialParams).then((response) => {
     if (response.status === "error") {
       return dispatch(setTasksError(response.message));
@@ -46,24 +45,24 @@ export const tasksRequest = (params) => (dispatch) => {
   });
 };
 
-export const createNewTask = (payload) => (dispatch) => {
+export const createNewTask = (payload, params) => (dispatch) => {
   apiService.createTask(payload).then((response) => {
     if (response.status === "error") {
       return dispatch(setTasksError(JSON.stringify(response.message)));
     }
     if (response.status === "ok") {
       dispatch(successfully("Задача успешно добавлена"));
-      dispatch(tasksRequest());
+      dispatch(tasksRequest(params));
     }
   });
 };
-export const changeTask = (id, payload) => (dispatch) => {
+export const changeTask = (id, payload, params) => (dispatch) => {
   apiService.updateTask(id, payload).then((response) => {
     if (response.status === "error") {
       return dispatch(setTasksError(JSON.stringify(response.message)));
     }
     if (response.status === "ok") {
-      dispatch(tasksRequest());
+      dispatch(tasksRequest(params));
     }
   });
 };

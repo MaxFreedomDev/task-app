@@ -15,13 +15,32 @@ import Radio from "@material-ui/core/Radio";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormControl from "@material-ui/core/FormControl";
 import { StatusData } from "../../utils/status-data";
+import { getTaskSelector } from "../../store/selectors/tasks-selectors";
 
-const ChangeTask = ({ task, handleClose }) => {
+const ChangeTask = ({
+  task,
+  handleClose,
+  open,
+  status,
+  text,
+  setStatus,
+  setText,
+  page,
+  name,
+  order,
+}) => {
   const { changeTask } = useActions();
+  const newStatus = getTaskSelector(status);
+
   const { register, handleSubmit, errors, control } = useForm();
   const onSubmit = (data, e) => {
     const token = localStorage.getItem("token");
     const id = StatusData.find((el) => el.name === data.status).id;
+    const params = {
+      sort_field: name,
+      sort_direction: order,
+      page: page + 1,
+    };
     if (task.text !== data.text) {
       const status = id === 0 ? 1 : 11;
       const payload = {
@@ -29,20 +48,28 @@ const ChangeTask = ({ task, handleClose }) => {
         status: status,
         token: token,
       };
-      changeTask(task.id, payload);
-    } else changeTask(task.id, { ...data, status: id, token: token });
+      changeTask(task.id, payload, params);
+    } else changeTask(task.id, { ...data, status: id, token: token }, params);
     e.preventDefault();
-    handleClose(null);
+    handleClose(!open);
+  };
+
+  const radio = (value) => {
+    const id = StatusData.find((el) => el.name === value).id;
+    setStatus(id);
+  };
+  const changeText = (text) => {
+    setText(text);
   };
 
   return (
     <Dialog
-      open={task !== null}
-      onClose={() => handleClose(null)}
+      open={open}
+      onClose={() => handleClose(!open)}
       maxWidth={"sm"}
       fullWidth
     >
-      <DialogTitle onClose={() => handleClose(null)}>
+      <DialogTitle onClose={() => handleClose(!open)}>
         Редактировать задачу
       </DialogTitle>
       <StyledDialogContent>
@@ -51,7 +78,8 @@ const ChangeTask = ({ task, handleClose }) => {
             <TextField
               fullWidth
               multiline
-              defaultValue={task?.text}
+              defaultValue={text}
+              onChange={(e) => changeText(e.target.value)}
               rows={4}
               id="text"
               label="Текст задачи"
@@ -75,7 +103,7 @@ const ChangeTask = ({ task, handleClose }) => {
             <Controller
               rules={{ required: true }}
               control={control}
-              defaultValue={task?.statusName}
+              defaultValue={newStatus}
               name="status"
               as={
                 <RadioGroup aria-label="status">
@@ -83,11 +111,13 @@ const ChangeTask = ({ task, handleClose }) => {
                     value="задача не выполнена"
                     control={<Radio />}
                     label="задача не выполнена"
+                    onChange={(e) => radio(e.target.value)}
                   />
                   <FormControlLabel
                     value="задача выполнена"
                     control={<Radio />}
                     label="задача выполнена"
+                    onChange={(e) => radio(e.target.value)}
                   />
                 </RadioGroup>
               }

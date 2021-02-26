@@ -31,8 +31,11 @@ const Tasks = () => {
   const tasks = useSelector((state) => getNewTasksSelector(state));
   const { loading, count } = useSelector((state) => state.tasks);
   const { authentication } = useSelector((state) => state.auth);
-  const [openCreate, setOpenCreate] = useState(false);
   const [task, setTask] = useState(null);
+  const [openCreate, setOpenCreate] = useLocalStorage("openCreate", false);
+  const [openUpdate, setOpenUpdate] = useLocalStorage("openUpdate", false);
+  const [status, setStatus] = useLocalStorage("status", "");
+  const [text, setText] = useLocalStorage("text", "");
   const [page, setPage] = useLocalStorage("page", 0);
   const [name, setName] = useLocalStorage("name", "username");
   const [order, setOrder] = useLocalStorage("order", "asc");
@@ -48,6 +51,13 @@ const Tasks = () => {
     order,
     setOrder
   );
+
+  const openTask = async (task) => {
+    await setTask(task);
+    await setStatus(task.status);
+    await setText(task.text);
+    await setOpenUpdate(!openUpdate);
+  };
 
   useEffect(() => {
     dispatch(
@@ -81,22 +91,41 @@ const Tasks = () => {
               <TableRow
                 key={row.id}
                 className="tableRow"
-                onClick={() => setTask(row)}
+                onClick={() => openTask(row)}
               >
                 <TableCell>{row.username}</TableCell>
                 <TableCell>{row.email}</TableCell>
                 <TableCell width={300} className="cellText">
                   {row.text}
                 </TableCell>
-                <TableCell>{row.statusName}</TableCell>
+                <TableCell width={360}>{row.statusName}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </TblContainer>
         <TblPagination />
       </div>
-      <CreateTask open={openCreate} handleClose={setOpenCreate} />
-      {authentication && <ChangeTask handleClose={setTask} task={task} />}
+      <CreateTask
+        open={openCreate}
+        handleClose={setOpenCreate}
+        page={page}
+        name={name}
+        order={order}
+      />
+      {authentication && openUpdate && (
+        <ChangeTask
+          task={task}
+          open={openUpdate}
+          handleClose={setOpenUpdate}
+          status={status}
+          setStatus={setStatus}
+          setText={setText}
+          text={text}
+          page={page}
+          name={name}
+          order={order}
+        />
+      )}
     </>
   );
 };

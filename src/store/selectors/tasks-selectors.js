@@ -14,3 +14,16 @@ export const getNewTasksSelector = createSelector(
     }));
   }
 );
+
+export const getTaskSelector = createSelector(
+  [(status) => status],
+  (status) => {
+    if (status === 11) {
+      return (status = "задача выполнена");
+    }
+    if (status === 1) {
+      return (status = "задача не выполнена");
+    }
+    return (status = StatusData.find((el) => el.id === status).name);
+  }
+);

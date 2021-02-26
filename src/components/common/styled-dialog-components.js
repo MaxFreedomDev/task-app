@@ -23,7 +23,7 @@ const StyledIconButton = styled(IconButton)`
     position: absolute;
     color: #f1512f;
     top: -5px;
-    right: 10px;
+    right: 0;
     &:hover {
       background: inherit;
     }

@@ -12,13 +12,18 @@ import { useActions } from "../../hooks/use-actions";
 
 import "./tasks.scss";
 
-const CreateTask = ({ open, handleClose }) => {
+const CreateTask = ({ open, handleClose, page, name, order }) => {
   const { register, handleSubmit, errors } = useForm();
   const { createNewTask } = useActions();
   const onSubmit = (data, e) => {
+    const params = {
+      sort_field: name,
+      sort_direction: order,
+      page: page + 1,
+    };
     e.preventDefault();
     handleClose(!open);
-    createNewTask(data);
+    createNewTask(data, params);
   };
 
   return (

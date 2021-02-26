@@ -1,5 +1,6 @@
 import { apiService } from "../../index";
 import axios from "axios";
+import { loadingTasks } from "./tasks";
 
 const setAuth = (auth) => {
   return {
@@ -25,6 +26,7 @@ export const signIn = (credentials) => (dispatch) => {
       };
       localStorage.setItem("token", response.message.token);
       dispatch(setAuth(true));
+      dispatch(loadingTasks());
     }
   });
 };
@@ -36,6 +38,7 @@ export const checkToken = () => (dispatch) => {
       Authorization: `Bearer ${token}`,
     };
     dispatch(setAuth(true));
+    dispatch(loadingTasks());
   }
 };
 

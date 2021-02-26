@@ -34,17 +34,13 @@ export default class ApiService {
   login(payload) {
     return this.getInitializedApi("login", "post", payload);
   }
-  tasks() {
-    return this.getInitializedApi("", "get", {
-      sort_field: "username",
-      sort_direction: "asc",
-      page: 1,
-    });
-  }
-  tasksParams(params) {
+  tasks(params) {
     return this.getInitializedApi("", "get", { ...params });
   }
   createTask(payload) {
     return this.getInitializedApi("create", "post", payload);
+  }
+  updateTask(id, payload) {
+    return this.getInitializedApi(`edit/${id}`, "post", payload);
   }
 }

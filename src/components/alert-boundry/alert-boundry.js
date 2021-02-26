@@ -31,7 +31,7 @@ const AlertBoundry = (props) => {
     if (error) {
       setTimeout(() => {
         setTasksError(null);
-      }, 2000);
+      }, 5000);
     }
     if (done) {
       setTimeout(() => {

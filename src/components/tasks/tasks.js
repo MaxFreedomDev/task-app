@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useActions } from "../../hooks/use-actions";
 import { tasksRequest } from "../../store/action-creators/tasks";
 import useTable from "../common/use-table";
 import TableBody from "@material-ui/core/TableBody";
@@ -12,6 +11,8 @@ import styled from "styled-components";
 import StyledButton from "../common/styled-button";
 import CreateTask from "./create-task";
 import { getNewTasksSelector } from "../../store/selectors/tasks-selectors";
+import ChangeTask from "./change-task";
+import { useLocalStorage } from "../../hooks/use-local-storage";
 
 const headCells = [
   { id: 0, disablePadding: false, label: "Имя пользователя", name: "username" },
@@ -33,21 +34,36 @@ const StyledTableCell = styled(TableCell)`
 
 const Tasks = () => {
   const dispatch = useDispatch();
-  const { tasksParamsRequest } = useActions();
   const tasks = useSelector((state) => getNewTasksSelector(state));
   const { loading, count } = useSelector((state) => state.tasks);
+  const { authentication } = useSelector((state) => state.auth);
   const [openCreate, setOpenCreate] = useState(false);
+  const [task, setTask] = useState(null);
+  const [page, setPage] = useLocalStorage("page", 0);
+  const [name, setName] = useLocalStorage("name", "username");
+  const [order, setOrder] = useLocalStorage("order", "asc");
 
   const { TblContainer, TblHead, TblPagination } = useTable(
     tasks,
     headCells,
     count,
-    tasksParamsRequest
+    page,
+    setPage,
+    name,
+    setName,
+    order,
+    setOrder
   );
 
   useEffect(() => {
-    dispatch(tasksRequest());
-  }, [dispatch]);
+    dispatch(
+      tasksRequest({
+        sort_field: name,
+        sort_direction: order,
+        page: page + 1,
+      })
+    );
+  }, [name, order, page, dispatch]);
 
   if (loading) {
     return <h1>Loading...</h1>;
@@ -68,21 +84,23 @@ const Tasks = () => {
           <TblHead />
           <TableBody>
             {tasks.map((row) => (
-              <TableRow key={row.id} className="tableRow">
+              <TableRow
+                key={row.id}
+                className="tableRow"
+                onClick={() => setTask(row)}
+              >
                 <TableCell>{row.username}</TableCell>
                 <TableCell>{row.email}</TableCell>
                 <StyledTableCell>{row.text}</StyledTableCell>
-                <TableCell>{row.status}</TableCell>
+                <TableCell>{row.statusName}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </TblContainer>
         <TblPagination />
       </div>
-      {openCreate && (
-        <CreateTask open={openCreate} handleClose={setOpenCreate} />
-      )}
-      {/*<ChangeTask />*/}
+      <CreateTask open={openCreate} handleClose={setOpenCreate} />
+      {authentication && <ChangeTask handleClose={setTask} task={task} />}
     </>
   );
 };

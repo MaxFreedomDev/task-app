@@ -10,7 +10,7 @@ export const getNewTasksSelector = createSelector(
   (tasks) => {
     return tasks.map((item) => ({
       ...item,
-      status: StatusData.find((el) => el.id === item.status).name,
+      statusName: StatusData.find((el) => el.id === item.status).name,
     }));
   }
 );

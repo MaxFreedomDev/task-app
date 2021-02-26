@@ -24,14 +24,15 @@ export default function useTable(
   records,
   headCells,
   totalRecordsCount,
-  tasksParamsRequest
+  page,
+  setPage,
+  name,
+  setName,
+  order,
+  setOrder
 ) {
   const classes = useStyles();
-
-  const [page, setPage] = useState(0);
-  const [order, setOrder] = useState("desc");
   const [orderBy, setOrderBy] = useState();
-  const [name, setName] = useState("username");
 
   const TblContainer = (props) => (
     <Table className={classes.table}>{props.children}</Table>
@@ -48,12 +49,6 @@ export default function useTable(
       setOrder(order === "asc" ? "desc" : "asc");
       setOrderBy(cellId);
       setName(nameCell);
-      const params = {
-        sort_field: nameCell,
-        sort_direction: order,
-        page: page + 1,
-      };
-      tasksParamsRequest(params);
     };
 
     return (
@@ -79,19 +74,13 @@ export default function useTable(
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
-    const params = {
-      sort_field: name,
-      sort_direction: order === "asc" ? "desc" : "asc",
-      page: newPage + 1,
-    };
-    tasksParamsRequest(params);
   };
 
   const TblPagination = () => (
     <TablePagination
       component="div"
       count={totalRecordsCount}
-      page={page}
+      page={totalRecordsCount === 0 ? 0 : page}
       rowsPerPage={3}
       rowsPerPageOptions={[]}
       onChangePage={handleChangePage}

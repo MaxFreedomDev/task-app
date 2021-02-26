@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2176b951-7db0-41ca-8df5-d75e99964c19" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/alert-boundry/alert-boundry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/selectors/tasks-selectors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/status-data.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/tasks/create-task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tasks/create-task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/action-creators/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/action-creators/tasks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/tasks-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/tasks-reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tasks/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tasks/tasks.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,7 +78,7 @@
       <updated>1614243144845</updated>
       <workItem from="1614243147115" duration="281000" />
       <workItem from="1614243501460" duration="45940000" />
-      <workItem from="1614330184269" duration="10572000" />
+      <workItem from="1614330184269" duration="11344000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1614244739827</created>
@@ -116,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614337061905</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add alert">
+      <created>1614340940518</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1614340940518</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,6 +147,7 @@
     <MESSAGE value="authorization" />
     <MESSAGE value="add table, sort, pagination" />
     <MESSAGE value="add create a new task" />
-    <option name="LAST_COMMIT_MESSAGE" value="add create a new task" />
+    <MESSAGE value="add alert" />
+    <option name="LAST_COMMIT_MESSAGE" value="add alert" />
   </component>
 </project>

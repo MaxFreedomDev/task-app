@@ -11,6 +11,7 @@ import "./tasks.scss";
 import styled from "styled-components";
 import StyledButton from "../common/styled-button";
 import CreateTask from "./create-task";
+import { getNewTasksSelector } from "../../store/selectors/tasks-selectors";
 
 const headCells = [
   { id: 0, disablePadding: false, label: "Имя пользователя", name: "username" },
@@ -33,7 +34,8 @@ const StyledTableCell = styled(TableCell)`
 const Tasks = () => {
   const dispatch = useDispatch();
   const { tasksParamsRequest } = useActions();
-  const { tasks, loading, count } = useSelector((state) => state.tasks);
+  const tasks = useSelector((state) => getNewTasksSelector(state));
+  const { loading, count } = useSelector((state) => state.tasks);
   const [openCreate, setOpenCreate] = useState(false);
 
   const { TblContainer, TblHead, TblPagination } = useTable(

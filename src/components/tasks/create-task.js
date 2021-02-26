@@ -8,8 +8,9 @@ import {
 } from "../common/styled-dialog-components";
 import TextField from "@material-ui/core/TextField/TextField";
 import { useForm } from "react-hook-form";
-import "./tasks.scss";
 import { useActions } from "../../hooks/use-actions";
+
+import "./tasks.scss";
 
 const CreateTask = ({ open, handleClose }) => {
   const { register, handleSubmit, errors } = useForm();

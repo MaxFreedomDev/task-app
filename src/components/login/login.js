@@ -39,7 +39,7 @@ const Login = () => {
               name="username"
               autoComplete="none"
               variant="outlined"
-              error={!!errors.login}
+              error={!!errors.username}
               inputRef={register({
                 required: "поле не должно быть пустым",
               })}

@@ -44,3 +44,12 @@ export const tasksParamsRequest = (params) => (dispatch) => {
     dispatch(setTasks(response.message.tasks));
   });
 };
+
+export const createNewTask = (payload) => (dispatch) => {
+  apiService.createTask(payload).then((response) => {
+    if (response.status === "error") {
+      return dispatch(setTasksError(response.message));
+    }
+    dispatch(tasksRequest());
+  });
+};

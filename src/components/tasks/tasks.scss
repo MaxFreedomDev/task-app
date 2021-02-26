@@ -1,5 +1,10 @@
 @import "../row/row";
 
+.btnWrapper {
+  display: flex;
+  padding: 25px 15px;
+}
+
 .tableWrapper{
   overflow-x: auto;
 }
@@ -11,6 +16,15 @@
   }
   &:hover {
     background-color: #fafafa;
+  }
+}
+
+//create-task
+
+.inputCreate {
+  margin-bottom: 20px;
+  .error {
+    color: red;
   }
 }
 

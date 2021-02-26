@@ -5,12 +5,16 @@ import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
 import "./row.scss";
 import { useActions } from "../../hooks/use-actions";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { LOGIN_ROUTE, TASKS_ROUTE } from "../../utils/constants";
 
 const Row = (props) => {
   const { authentication } = useSelector((state) => state.auth);
   const { signOut } = useActions();
+  const logout = () => {
+    signOut();
+    props.history.push(LOGIN_ROUTE);
+  };
   return (
     <div className="wrapper-app">
       <nav>
@@ -19,7 +23,7 @@ const Row = (props) => {
           <Link to={TASKS_ROUTE}>Список задач</Link>
         </div>
         {authentication ? (
-          <div className="logout" onClick={() => signOut()}>
+          <div className="logout" onClick={logout}>
             <span>Выйти</span>
             <ExitToAppIcon />
           </div>
@@ -35,4 +39,4 @@ const Row = (props) => {
   );
 };
 
-export default Row;
+export default withRouter(Row);

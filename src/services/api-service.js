@@ -3,34 +3,7 @@ import axios from "axios";
 export default class ApiService {
   baseUrl = "https://uxcandy.com/~shapoval/test-task-backend/v2/";
   developer = "?developer=Maxim";
-  /*  getInitializedApi(url, method = "get", params = null) {
-    return new Promise((resolve, reject) => {
-      let data = method === "get" ? { params } : { data: params };
-      let form_data = new FormData();
-      for (let key in params) {
-        form_data.append(key, params[key]);
-      }
-      return axios({
-        headers: {
-          "Content-Type": "multipart/form-data",
-          processData: false,
-          dataType: "json",
-          crossDomain: "true",
-          mimeType: "multipart/form-data",
-        },
-        method,
-        baseURL: this.baseUrl,
-        url: url + `${this.developer}`,
-        data: method === "get" ? { ...data } : form_data,
-      })
-        .then(({ data }) => {
-          resolve(data);
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
-  }*/
+
   getInitializedApi(url, method = "get", params = null) {
     return new Promise((resolve, reject) => {
       let form_data = new FormData();
@@ -47,7 +20,6 @@ export default class ApiService {
         method,
         baseURL: this.baseUrl,
         url: url + `${this.developer}`,
-        /*data: method === "get" ? data : form_data,*/
         ...data,
       })
         .then(({ data }) => {
@@ -71,5 +43,8 @@ export default class ApiService {
   }
   tasksParams(params) {
     return this.getInitializedApi("", "get", { ...params });
+  }
+  createTask(payload) {
+    return this.getInitializedApi("create", "post", payload);
   }
 }

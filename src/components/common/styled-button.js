@@ -8,7 +8,7 @@ const StyledButton = styled(Button)`
     font-size: 16px;
     font-weight: bold;
     color: #ffffff;
+    text-transform: inherit;
   }
 `;
-
 export default StyledButton;

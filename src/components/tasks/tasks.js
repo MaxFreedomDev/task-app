@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useActions } from "../../hooks/use-actions";
 import { tasksRequest } from "../../store/action-creators/tasks";
@@ -9,10 +9,12 @@ import TableCell from "@material-ui/core/TableCell";
 
 import "./tasks.scss";
 import styled from "styled-components";
+import StyledButton from "../common/styled-button";
+import CreateTask from "./create-task";
 
 const headCells = [
   { id: 0, disablePadding: false, label: "Имя пользователя", name: "username" },
-  { id: 1, name: "email", disablePadding: false, label: "e-mail" },
+  { id: 1, name: "email", disablePadding: false, label: "Email" },
   {
     id: 2,
     name: "text",
@@ -32,6 +34,7 @@ const Tasks = () => {
   const dispatch = useDispatch();
   const { tasksParamsRequest } = useActions();
   const { tasks, loading, count } = useSelector((state) => state.tasks);
+  const [openCreate, setOpenCreate] = useState(false);
 
   const { TblContainer, TblHead, TblPagination } = useTable(
     tasks,
@@ -49,22 +52,36 @@ const Tasks = () => {
   }
 
   return (
-    <div className="tableWrapper">
-      <TblContainer>
-        <TblHead />
-        <TableBody>
-          {tasks.map((row) => (
-            <TableRow key={row.id} className="tableRow">
-              <TableCell>{row.username}</TableCell>
-              <TableCell>{row.email}</TableCell>
-              <StyledTableCell>{row.text}</StyledTableCell>
-              <TableCell>{row.status}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </TblContainer>
-      <TblPagination />
-    </div>
+    <>
+      <div className="btnWrapper">
+        <StyledButton
+          variant="contained"
+          onClick={() => setOpenCreate(!openCreate)}
+        >
+          Создать задачу
+        </StyledButton>
+      </div>
+      <div className="tableWrapper">
+        <TblContainer>
+          <TblHead />
+          <TableBody>
+            {tasks.map((row) => (
+              <TableRow key={row.id} className="tableRow">
+                <TableCell>{row.username}</TableCell>
+                <TableCell>{row.email}</TableCell>
+                <StyledTableCell>{row.text}</StyledTableCell>
+                <TableCell>{row.status}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </TblContainer>
+        <TblPagination />
+      </div>
+      {openCreate && (
+        <CreateTask open={openCreate} handleClose={setOpenCreate} />
+      )}
+      {/*<ChangeTask />*/}
+    </>
   );
 };
 

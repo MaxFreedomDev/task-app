@@ -5,14 +5,14 @@ import useTable from "../common/use-table";
 import TableBody from "@material-ui/core/TableBody";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
-
-import "./tasks.scss";
-import styled from "styled-components";
 import StyledButton from "../common/styled-button";
 import CreateTask from "./create-task";
 import { getNewTasksSelector } from "../../store/selectors/tasks-selectors";
 import ChangeTask from "./change-task";
 import { useLocalStorage } from "../../hooks/use-local-storage";
+import Loader from "../loader/loader";
+
+import "./tasks.scss";
 
 const headCells = [
   { id: 0, disablePadding: false, label: "Имя пользователя", name: "username" },
@@ -25,12 +25,6 @@ const headCells = [
   },
   { id: 3, name: "status", disablePadding: false, label: "Статус задачи" },
 ];
-
-const StyledTableCell = styled(TableCell)`
-  && {
-    min-width: 200px;
-  }
-`;
 
 const Tasks = () => {
   const dispatch = useDispatch();
@@ -66,7 +60,7 @@ const Tasks = () => {
   }, [name, order, page, dispatch]);
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <Loader />;
   }
 
   return (
@@ -91,7 +85,9 @@ const Tasks = () => {
               >
                 <TableCell>{row.username}</TableCell>
                 <TableCell>{row.email}</TableCell>
-                <StyledTableCell>{row.text}</StyledTableCell>
+                <TableCell width={300} className="cellText">
+                  {row.text}
+                </TableCell>
                 <TableCell>{row.statusName}</TableCell>
               </TableRow>
             ))}

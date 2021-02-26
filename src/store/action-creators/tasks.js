@@ -31,11 +31,10 @@ export const successfully = (text) => {
 };
 
 export const tasksRequest = (params) => (dispatch) => {
-  console.log(params);
   const initialParams = {
-    sort_field: params.sort_field || "username",
-    sort_direction: params.sort_direction || "asc",
-    page: params.page || 1,
+    sort_field: params?.sort_field || "username",
+    sort_direction: params?.sort_direction || "asc",
+    page: params?.page || 1,
   };
   dispatch(loadingTasks());
   apiService.tasks(initialParams).then((response) => {

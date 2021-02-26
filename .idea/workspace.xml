@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2176b951-7db0-41ca-8df5-d75e99964c19" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/hooks/use-local-storage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/loader/loader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/loader/loader.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/alert-boundry/alert-boundry.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/alert-boundry/alert-boundry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/use-table.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/use-table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tasks/change-task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tasks/change-task.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/tasks/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tasks/tasks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/api-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/api-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tasks/tasks.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tasks/tasks.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/action-creators/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/action-creators/tasks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/selectors/tasks-selectors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/selectors/tasks-selectors.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +78,7 @@
       <updated>1614243144845</updated>
       <workItem from="1614243147115" duration="281000" />
       <workItem from="1614243501460" duration="45940000" />
-      <workItem from="1614330184269" duration="25511000" />
+      <workItem from="1614330184269" duration="28047000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1614244739827</created>
@@ -131,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614341718578</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="add use-local-storage &amp;&amp; refactor use-table">
+      <created>1614362601630</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1614362601630</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +163,7 @@
     <MESSAGE value="add create a new task" />
     <MESSAGE value="add alert" />
     <MESSAGE value="add selectors tasks" />
-    <option name="LAST_COMMIT_MESSAGE" value="add selectors tasks" />
+    <MESSAGE value="add use-local-storage &amp;&amp; refactor use-table" />
+    <option name="LAST_COMMIT_MESSAGE" value="add use-local-storage &amp;&amp; refactor use-table" />
   </component>
 </project>

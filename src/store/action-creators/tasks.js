@@ -1,6 +1,6 @@
 import { apiService } from "../../index";
 
-const setTasksError = (error) => {
+export const setTasksError = (error) => {
   return {
     type: "SET_TASKS_ERROR",
     payload: error,
@@ -21,6 +21,12 @@ export const setTotalCountTask = (count) => {
   return {
     type: "SET_TOTAL_COUNT_TASK",
     payload: count,
+  };
+};
+export const successfully = (text) => {
+  return {
+    type: "SUCCESSFULLY",
+    payload: text,
   };
 };
 
@@ -48,8 +54,11 @@ export const tasksParamsRequest = (params) => (dispatch) => {
 export const createNewTask = (payload) => (dispatch) => {
   apiService.createTask(payload).then((response) => {
     if (response.status === "error") {
-      return dispatch(setTasksError(response.message));
+      return dispatch(setTasksError(JSON.stringify(response.message)));
     }
-    dispatch(tasksRequest());
+    if (response.status === "ok") {
+      dispatch(successfully("Задача успешно добавлена"));
+      dispatch(tasksRequest());
+    }
   });
 };

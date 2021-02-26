@@ -3,6 +3,7 @@ const initialState = {
   error: null,
   loading: false,
   count: 0,
+  successfully: null,
 };
 
 export const tasksReducer = (state = initialState, action) => {
@@ -18,6 +19,9 @@ export const tasksReducer = (state = initialState, action) => {
     }
     case "SET_TOTAL_COUNT_TASK": {
       return { ...state, count: Number(action.payload) };
+    }
+    case "SUCCESSFULLY": {
+      return { ...state, successfully: action.payload };
     }
     default:
       return state;

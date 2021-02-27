@@ -3,8 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="2176b951-7db0-41ca-8df5-d75e99964c19" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tasks/change-task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tasks/change-task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tasks/create-task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tasks/create-task.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/tasks/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tasks/tasks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/action-creators/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/action-creators/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/api-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/api-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/action-creators/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/action-creators/tasks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/selectors/tasks-selectors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/selectors/tasks-selectors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/status-data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/local-data.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +80,8 @@
       <workItem from="1614243147115" duration="281000" />
       <workItem from="1614243501460" duration="45940000" />
       <workItem from="1614330184269" duration="36703000" />
-      <workItem from="1614376668356" duration="4971000" />
+      <workItem from="1614376668356" duration="5203000" />
+      <workItem from="1614415673783" duration="3603000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1614244739827</created>
@@ -154,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614378369732</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="fix ajax headers: auth">
+      <created>1614381791214</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1614381791214</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,6 +198,7 @@
     <MESSAGE value="add loader, text &quot;ellipsis&quot;" />
     <MESSAGE value="add localStorage-state for create &amp;&amp; update" />
     <MESSAGE value="fix CORS error" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix CORS error" />
+    <MESSAGE value="fix ajax headers: auth" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix ajax headers: auth" />
   </component>
 </project>

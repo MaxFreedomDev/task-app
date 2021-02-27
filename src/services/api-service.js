@@ -4,7 +4,7 @@ export default class ApiService {
   baseUrl = "https://uxcandy.com/~shapoval/test-task-backend/v2/";
   developer = "?developer=Maxim";
 
-  getInitializedApi(url, method = "get", params = null) {
+  getInitializedApi(url, method = "get", params = []) {
     return new Promise((resolve, reject) => {
       let form_data = new FormData();
       for (let key in params) {

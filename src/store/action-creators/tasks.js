@@ -1,4 +1,5 @@
 import { apiService } from "../../index";
+import { signOut } from "./auth";
 
 export const setTasksError = (error) => {
   return {
@@ -58,6 +59,10 @@ export const createNewTask = (payload, params) => (dispatch) => {
 };
 export const changeTask = (id, payload, params) => (dispatch) => {
   apiService.updateTask(id, payload).then((response) => {
+    if (response.status === "error" && response.message.token) {
+      dispatch(signOut());
+      dispatch(setTasksError(JSON.stringify(response.message)));
+    }
     if (response.status === "error") {
       return dispatch(setTasksError(JSON.stringify(response.message)));
     }

@@ -6,6 +6,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import StyledButton from "../common/styled-button";
+import { headCells } from "../../utils/local-data";
 import CreateTask from "./create-task";
 import { getNewTasksSelector } from "../../store/selectors/tasks-selectors";
 import ChangeTask from "./change-task";
@@ -13,18 +14,6 @@ import { useLocalStorage } from "../../hooks/use-local-storage";
 import Loader from "../loader/loader";
 
 import "./tasks.scss";
-
-const headCells = [
-  { id: 0, disablePadding: false, label: "Имя пользователя", name: "username" },
-  { id: 1, name: "email", disablePadding: false, label: "Email" },
-  {
-    id: 2,
-    name: "text",
-    disablePadding: true,
-    label: "Текст задачи",
-  },
-  { id: 3, name: "status", disablePadding: false, label: "Статус задачи" },
-];
 
 const Tasks = () => {
   const dispatch = useDispatch();

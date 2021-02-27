@@ -1,5 +1,5 @@
 import { createSelector } from "reselect";
-import { StatusData } from "../../utils/status-data";
+import { LocalData } from "../../utils/local-data";
 
 export const getTasksSelector = (state) => {
   return state.tasks.tasks;
@@ -10,7 +10,7 @@ export const getNewTasksSelector = createSelector(
   (tasks) => {
     return tasks.map((item) => ({
       ...item,
-      statusName: StatusData.find((el) => el.id === item.status).name,
+      statusName: LocalData.find((el) => el.id === item.status).name,
     }));
   }
 );
@@ -24,6 +24,6 @@ export const getTaskSelector = createSelector(
     if (status === 1) {
       return (status = "задача не выполнена");
     }
-    return (status = StatusData.find((el) => el.id === status).name);
+    return (status = LocalData.find((el) => el.id === status).name);
   }
 );

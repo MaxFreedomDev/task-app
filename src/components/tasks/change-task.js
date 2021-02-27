@@ -14,7 +14,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormControl from "@material-ui/core/FormControl";
-import { StatusData } from "../../utils/status-data";
+import { LocalData } from "../../utils/local-data";
 import { getTaskSelector } from "../../store/selectors/tasks-selectors";
 
 const ChangeTask = ({
@@ -35,7 +35,7 @@ const ChangeTask = ({
   const { register, handleSubmit, errors, control } = useForm();
   const onSubmit = (data, e) => {
     const token = localStorage.getItem("token");
-    const id = StatusData.find((el) => el.name === data.status).id;
+    const id = LocalData.find((el) => el.name === data.status).id;
     const params = {
       sort_field: name,
       sort_direction: order,
@@ -55,7 +55,7 @@ const ChangeTask = ({
   };
 
   const radio = (value) => {
-    const id = StatusData.find((el) => el.name === value).id;
+    const id = LocalData.find((el) => el.name === value).id;
     setStatus(id);
   };
   const changeText = (text) => {

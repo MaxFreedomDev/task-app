@@ -91,10 +91,10 @@ const CreateTask = ({ open, handleClose, page, name, order }) => {
               name="text"
               margin="dense"
               variant="outlined"
-              error={!!errors.text}
+              /*              error={!!errors.text}
               inputRef={register({
                 required: "поле не должно быть пустым",
-              })}
+              })}*/
               type="text"
             />
             {errors.text && (
